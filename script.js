@@ -1,4 +1,5 @@
-
+//link list insertion diagram: https://docs.google.com/drawings/d/1XXDS_rn81hxdRvm-Ao-Si2q-ht3qRuOOIjpzPKkj49A/pub?w=960&h=720
+//link list deletion diagram: 
 
 
 function linked_list(){
@@ -21,6 +22,15 @@ function linked_list(){
     this.count++;
     return this.count;
 
+  }
+  //deletes the current list item
+  this.delete_list_item = function(){
+    //check if list is empty or not and take appropriate action
+    //search through list for the item prior to the current (would need to find the item with a next = current)
+    //set prev node's next value to the current node's next value
+    //set the current to either prev or prev's next
+    //decrement count
+    //return count
   }
   this.get_current_value = function(){
     if(this.is_list_empty()){
@@ -68,5 +78,28 @@ console.log(list.get_next_value()); //returns 3
 console.log(list.get_current_value()); //returns 3
 console.log(list.get_next_value()); //returns 8
 console.log(list.get_next_value()); //returns false
+
+//PROBLEM SET 2
+console.log(list.rewind()); //returns true
+console.log(list.add_list_item(12)); //returns 4
+console.log(list.rewind()); //returns true
+console.log(list.get_current_value()); //returns 1
+console.log(list.get_next_value()); //returns 12
+console.log(list.get_current_value()); //returns 12
+console.log(list.get_next_value()); //returns 3
+console.log(list.get_next_value()); //returns 8
+console.log(list.rewind()); //returns true
+console.log(list.get_current_value()); //returns 1
+console.log(list.get_next_value()); //returns 12
+console.log(list.get_next_value()); //returns 3
+console.log(list.get_next_value()); //returns 8
+console.log(list.get_next_value()); //returns false 
+console.log(list.delete_list_item()); //returns return 3
+console.log(list.rewind()); //returns true
+console.log(list.get_current_value()); //returns 1
+console.log(list.get_next_value()); //returns 3
+console.log(list.get_next_value()); //returns 8
+console.log(list.get_next_value()); //returns false
+
 
 
