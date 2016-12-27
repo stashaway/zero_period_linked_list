@@ -10,10 +10,11 @@ function linked_list(){
       value: data_payload,
       next: null
     }
-    if(this.current!=null){
+    if(!this.is_list_empty()){
       this.current.next = new_obj;
     }
     else{
+      //new object's next node is set to current object's next node
       this.head = new_obj;
     }
     this.current = new_obj;
