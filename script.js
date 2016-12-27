@@ -6,20 +6,10 @@ function linked_list(){
   this.current = null;
   this.count = 0;
   this.add_list_item = function(data_payload){
-    //create new object
-    // set new_obj val to data_payload
-    // set new object next to null
     var new_obj = {
       value: data_payload,
       next: null
     }
-    //if current is not null
-      // set current next to new object 
-    //else 
-      // HEAD = new_obj
-    //set current to new object
-    //increment count
-    //returns count
     if(this.current!=null){
       this.current.next = new_obj;
     }
@@ -48,9 +38,6 @@ function linked_list(){
     }
     this.current = this.current.next;
     return this.get_current_value();
-  	//walk to the next item in the list
-  	//returns the value of the item walked to
-  	//if there are no other items, it returns false
   }
   this.is_list_empty = function(){
     if(this.current===null){
@@ -64,8 +51,6 @@ function linked_list(){
     }
     this.current = this.head;
     return true;
-  	//moves the list pointer back to the beginning of the list
-  	//returns true if accomplished, or false if the list is empty
   }
 }
 
