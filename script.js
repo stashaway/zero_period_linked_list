@@ -1,5 +1,5 @@
 //link list insertion diagram: https://docs.google.com/drawings/d/1XXDS_rn81hxdRvm-Ao-Si2q-ht3qRuOOIjpzPKkj49A/pub?w=960&h=720
-//link list deletion diagram: 
+//link list deletion diagram: https://docs.google.com/drawings/d/1iHibqKaeuySxS6O_38rmay2swkmUwCsw8zwWCNZtYwQ/pub?w=960&h=720
 
 
 function linked_list(){
@@ -94,6 +94,8 @@ console.log(list.get_next_value()); //returns 12
 console.log(list.get_next_value()); //returns 3
 console.log(list.get_next_value()); //returns 8
 console.log(list.get_next_value()); //returns false 
+console.log(list.rewind()); //returns true
+console.log(list.get_next_value()); //returns 12
 console.log(list.delete_list_item()); //returns return 3
 console.log(list.rewind()); //returns true
 console.log(list.get_current_value()); //returns 1
