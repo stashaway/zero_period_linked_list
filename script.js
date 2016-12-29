@@ -6,16 +6,26 @@ function linked_list(){
   this.head = null;
   this.current = null;
   this.count = 0;
-  this.add_list_item = function(data_payload){
+  this.add_list_item = function(data_payload, add_to_beginning){
+    if(add_to_beginning === undefined){
+      add_to_beginning = false;
+    }
     var new_obj = {
       value: data_payload,
       next: null
     }
+
     if(!this.is_list_empty()){
-      this.current.next = new_obj;
+      //new object's next node is set to current object's next node
+      if(add_to_beginning){
+        new_obj.next = head;
+        head = new_obj;
+      } else {
+        new_obj.next = this.current.next;
+        this.current.next = new_obj;
+      }
     }
     else{
-      //new object's next node is set to current object's next node
       this.head = new_obj;
     }
     this.current = new_obj;
@@ -25,12 +35,26 @@ function linked_list(){
   }
   //deletes the current list item
   this.delete_list_item = function(){
-    //check if list is empty or not and take appropriate action
+    if(this.is_list_empty()){    //check if list is empty or not and take appropriate action
+
+      return false;
+    }
+    var prev = this.head;
+    var temp_current = prev;
     //search through list for the item prior to the current (would need to find the item with a next = current)
+    while(temp_current.next != null && temp_current != this.current) {
+      prev = temp_current;
+      temp_current = temp_current.next;
+    }
     //set prev node's next value to the current node's next value
+    prev.next = this.current.next;
+    this.current.next = null;
     //set the current to either prev or prev's next
+    this.current = prev;
     //decrement count
+    this.count--;
     //return count
+    return this.count;
   }
   this.get_current_value = function(){
     if(this.is_list_empty()){
@@ -95,6 +119,7 @@ console.log(list.get_next_value()); //returns 3
 console.log(list.get_next_value()); //returns 8
 console.log(list.get_next_value()); //returns false 
 console.log(list.rewind()); //returns true
+console.log('should work up to here');
 console.log(list.get_next_value()); //returns 12
 console.log(list.delete_list_item()); //returns return 3
 console.log(list.rewind()); //returns true
