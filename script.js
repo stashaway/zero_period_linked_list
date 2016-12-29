@@ -12,7 +12,8 @@ function linked_list(){
     }
     var new_obj = {
       value: data_payload,
-      next: null
+      next: null,
+      is_linked_list_node: true
     }
 
     if(!this.is_list_empty()){
@@ -31,29 +32,34 @@ function linked_list(){
     this.current = new_obj;
     this.count++;
     return this.count;
-
   }
-  //deletes the current list item
+  //find a link list node based on either the value to look for, or a particular node to look for
+  this.find_item = function(item){
+    //determine if we are looking for an item directly, or an item's value
+    //start looking at list from beginning
+    //keep moving forward until either the end of the list
+      //or the item or value of item is found
+    //update current to point to the item (or the item that holds the value)
+    //return node
+  }
+  //completely empty the list
+  this.clear_list = function(){
+    //figure it out!
+  }
   this.delete_list_item = function(){
-    if(this.is_list_empty()){    //check if list is empty or not and take appropriate action
-
+    if(this.is_list_empty()){    
       return false;
     }
     var prev = this.head;
     var temp_current = prev;
-    //search through list for the item prior to the current (would need to find the item with a next = current)
     while(temp_current.next != null && temp_current != this.current) {
       prev = temp_current;
       temp_current = temp_current.next;
     }
-    //set prev node's next value to the current node's next value
     prev.next = this.current.next;
     this.current.next = null;
-    //set the current to either prev or prev's next
     this.current = prev;
-    //decrement count
     this.count--;
-    //return count
     return this.count;
   }
   this.get_current_value = function(){
@@ -61,7 +67,6 @@ function linked_list(){
       return false;
     }
     return this.current.value;
-  	//return the value of the current link list node
   }
   this.get_next_value = function(){
     if(this.is_list_empty()){
