@@ -14,7 +14,7 @@ function linked_list(){
       value: data_payload,
       next: null,
       is_linked_list_node: true
-    }
+    };
 
     if(!this.is_list_empty()){
       //new object's next node is set to current object's next node
@@ -32,7 +32,7 @@ function linked_list(){
     this.current = new_obj;
     this.count++;
     return this.count;
-  }
+  };
   //find a link list node based on either the value to look for, or a particular node to look for
   this.find_item = function(item){
     //determine if we are looking for an item directly, or an item's value
@@ -41,11 +41,27 @@ function linked_list(){
       //or the item or value of item is found
     //update current to point to the item (or the item that holds the value)
     //return node
-  }
+      if (item.is_linked_list_node === undefined) {
+          this.rewind();
+          while (this.current.next != null) {
+              if (this.current.get_current_value() === item) {
+                  return this.current;
+              } else {
+                  this.get_next_value();
+              }
+          }
+      } else {
+          this.current=item;
+          return this.current;
+      }
+  };
   //completely empty the list
   this.clear_list = function(){
     //figure it out!
-  }
+      this.head = null;
+      this.current = null;
+      this.count = 0;
+  };
   this.delete_list_item = function(){
     if(this.is_list_empty()){    
       return false;
@@ -61,13 +77,13 @@ function linked_list(){
     this.current = prev;
     this.count--;
     return this.count;
-  }
+  };
   this.get_current_value = function(){
     if(this.is_list_empty()){
       return false;
     }
     return this.current.value;
-  }
+  };
   this.get_next_value = function(){
     if(this.is_list_empty()){
       return false;
@@ -78,13 +94,13 @@ function linked_list(){
     }
     this.current = this.current.next;
     return this.get_current_value();
-  }
+  };
   this.is_list_empty = function(){
     if(this.current===null){
       console.log('list is empty');
       return true;
     }    
-  }
+  };
   this.rewind = function(){
     if(this.is_list_empty()){
       return false;
@@ -132,6 +148,5 @@ console.log(list.get_current_value()); //returns 1
 console.log(list.get_next_value()); //returns 3
 console.log(list.get_next_value()); //returns 8
 console.log(list.get_next_value()); //returns false
-
 
 
